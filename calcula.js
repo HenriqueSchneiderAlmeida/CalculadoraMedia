@@ -48,7 +48,7 @@ function atualizaTabela(){
 function atualizaMediaFinal(){
    const Media = CalculaMedia();
 
-   document.getElementById('mediaFinal').innerHTML = Media;
+   document.getElementById('mediaFinal').innerHTML = Media.toFixed(2);
    document.getElementById('resultadoFinal').innerHTML = Media >= notaCorte ? spanAprovado : spanReprovado;
 }
 
