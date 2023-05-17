@@ -24,7 +24,7 @@
 
         <form id="form-atividade">    
             <h2 id="media-informada">
-                Digite a média: <input type="number" id="nota-de-corte" required max="10" min="0">
+                Digite a média: <input type="number" id="nota-de-corte" required max="10" min="0" onblur="Desabilita()">
             </h2> <br>
             <div class="form-container">
                 <input type="text" id="nome-atividade" required placeholder="Nome da Atividade">
@@ -52,5 +52,8 @@
         </table>        
     </div>
     <script src="./calcula.js"></script>
+    <script>
+        Desabilita()
+    </script>
 </body>
 </html>

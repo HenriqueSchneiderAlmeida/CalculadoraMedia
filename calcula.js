@@ -49,6 +49,7 @@ function atualizaMediaFinal(){
 
     document.getElementById('mediaFinal').innerHTML = Media.toFixed(3);
     document.getElementById('resultadoFinal').innerHTML = Media >= notaCorte.value ? spanAprovado : spanReprovado;
+    document.getElementById("nota-de-corte").disabled = true;
 }
 
 function CalculaMedia (){
