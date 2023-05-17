@@ -5,9 +5,6 @@ const atividades = [];
 const notas = [];
 const spanAprovado = '<span class="aprovado">Aprovado</span>';
 const spanReprovado = '<span class="reprovado">Reprovado</span>';
-const notaCorte = parseFloat(prompt("Digite a nota de corte:"))
-
-document.getElementById('Nota-Corte').innerHTML = `A nota de corte é: ${notaCorte}`;
 
 let linhas ='';
 
@@ -20,9 +17,10 @@ form.addEventListener('submit', function(e) {
 });
 
 function adicionaLinhas() {
+    const notaCorte = document.getElementById('nota-de-corte');
     const inputNomeAtividade = document.getElementById('nome-atividade');
     const inputNotaAtividade = document.getElementById('nota-atividade');
-
+    
     if (atividades.includes(inputNomeAtividade.value)) {
         alert (`A atividade: ${inputNomeAtividade.value} já foi incluida`);
     } else {
@@ -30,9 +28,9 @@ function adicionaLinhas() {
         notas.push(parseFloat(inputNotaAtividade.value));
 
         let linha = '<tr>';
-        linha += `<td>${inputNomeAtividade.value}</td>`; 
+        linha += `<td>${notaCorte.value}</td>`; 
         linha += `<td>${inputNotaAtividade.value}</td>`;   
-        linha += `<td>${inputNotaAtividade.value >= notaCorte ? imgAprovado : imgReprovado}</td>`;   
+        linha += `<td>${inputNotaAtividade.value >= notaCorte.value ? imgAprovado : imgReprovado}</td>`; 
         linha += '</tr>';
         linhas+= linha;
     }
@@ -46,13 +44,15 @@ function atualizaTabela(){
 }
 
 function atualizaMediaFinal(){
-   const Media = CalculaMedia();
+    const Media = CalculaMedia();
+    const notaCorte = document.getElementById('nota-de-corte');
 
-   document.getElementById('mediaFinal').innerHTML = Media.toFixed(2);
-   document.getElementById('resultadoFinal').innerHTML = Media >= notaCorte ? spanAprovado : spanReprovado;
+    document.getElementById('mediaFinal').innerHTML = Media.toFixed(3);
+    document.getElementById('resultadoFinal').innerHTML = Media >= notaCorte.value ? spanAprovado : spanReprovado;
 }
 
 function CalculaMedia (){
+    const notaCorte = document.getElementById('nota-de-corte');
     let SomaNotas = 0;
     for (let i = 0; i < notas.length; i++){
         SomaNotas += notas[i];
